@@ -13,6 +13,6 @@ class EmailController extends Controller
         $emailJob = (new SendEmailJob())->delay(Carbon::now()->addSeconds(3));
         dispatch($emailJob);
 
-        echo 'Email job dispatched.';
+        return view('email-sent');
     }
 }

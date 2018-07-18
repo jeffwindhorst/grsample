@@ -27,5 +27,10 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+
+Route::get('/profile', function () {
+    return view('profile');
+})->name('profile');
+
 // Email route
 Route::get('email', 'EmailController@sendEmail');
