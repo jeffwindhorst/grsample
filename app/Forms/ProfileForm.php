@@ -10,10 +10,18 @@ class ProfileForm extends Form
     {
         $this
             ->add('birthdate', 'date', [
-                'label' => 'Birthday'
+                'label' => 'Birthday',
+                'rules' => 'required',
+                'error_messages' => [
+                    'Birthday is required.'
+                ]
             ])
             ->add('phone', 'text', [
-                'label' => 'Phone'
+                'label' => 'Phone',
+                'rules' => 'required|min:5',
+                'error_messages' => [
+                    'Phone is required.'
+                ]
             ])
             ->add('Save', 'submit', [
                 'class' => 'btn btn-primary'

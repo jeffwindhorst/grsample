@@ -4,9 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Kris\LaravelFormBuilder\FormBuilder;
+use Kris\LaravelFormBuilder\FormBuilderTrait;
+
+use App\Forms\ProfileForm;
 
 class UserProfileController extends Controller
 {
+    use FormBuilderTrait;
+
     /**
      * Create a new controller instance.
      *
@@ -38,6 +43,15 @@ class UserProfileController extends Controller
     }
 
     public function save(Request $request) {
-        echo 'SAVING PROFILE';
+        $form = $this->form(ProfileForm::class);
+
+        if (!$form->isValid()) {
+           return redirect()->back()->withErrors($form->getErrors())->withInput();
+       }
+
+       $birthday = $request->input('name');
+       $phone = $request->input('phone');
+       echo $phone;
+       //return redirect()->route('profile');
     }
 }

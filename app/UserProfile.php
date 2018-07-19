@@ -14,9 +14,12 @@ use Illuminate\Database\Eloquent\Model;
  * @property User $user
  * @property UserAddress[] $userAddresses
  */
-class user_profiles extends Model
+class UserProfiles extends Model
 {
     /**
+     * @var string
+     **/
+    protected $table = 'user_profiles';
      * @var array
      */
     protected $fillable = ['user_id', 'birthdate', 'phone', 'created_at', 'updated_at'];

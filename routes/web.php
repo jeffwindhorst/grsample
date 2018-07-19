@@ -39,7 +39,7 @@ Route::get('/profile', function () {
 })->name('profile')->middleware('auth');
 
 Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit')->middleware('auth');
-Route::post('/profile/save', 'UserProfileController@update')->name('profile-save')->middleware('auth');
+Route::post('/profile/save', 'UserProfileController@save')->name('profile-save')->middleware('auth');
 
 // Email route
 Route::get('email', 'EmailController@sendEmail')->middleware('auth');

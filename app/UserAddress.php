@@ -17,8 +17,13 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property UserProfile $userProfile
  */
-class user_addresses extends Model
+class UserAddresses extends Model
 {
+    /**
+     * @var string
+     **/
+     protected $table = user_addresses;
+
     /**
      * @var array
      */
