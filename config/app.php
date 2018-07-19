@@ -149,6 +149,7 @@ return [
 
         Collective\Html\HtmlServiceProvider::class,
         Krlove\EloquentModelGenerator\Provider\GeneratorServiceProvider::class,
+        Kris\LaravelFormBuilder\FormBuilderServiceProvider::class
         /*
          * Package Service Providers...
          */
@@ -214,6 +215,7 @@ return [
 
         'FORM' => Collective\Html\FormFacade::class,
         'HTML' => Collective\Html\HtmlFacade::class,
+        'FormBuilder' => Kris\LaravelFormBuilder\Facades\FormBuilder::class,
     ],
 
 ];
