@@ -63,6 +63,13 @@ html, body {
     margin-bottom: 30px;
 }
 
+.fright { float: right; }
+.fleft { float: left; }
+
+#profile-edit-link {
+    width: 75px;
+    font-size: .5em;
+}
 #header {
     border: 1px solid #ccc;
     border-width: 0 0 1px 0;

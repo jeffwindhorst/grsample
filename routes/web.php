@@ -27,10 +27,12 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-
+// Profile routes
 Route::get('/profile', function () {
     return view('profile');
 })->name('profile');
+
+Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit');
 
 // Email route
 Route::get('email', 'EmailController@sendEmail');

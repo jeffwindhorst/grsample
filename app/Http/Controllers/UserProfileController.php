@@ -25,4 +25,9 @@ class UserProfileController extends Controller
     {
         return view('profile');
     }
+
+    public function update(Request $request) {
+
+        return view('profile-edit');
+    }
 }
