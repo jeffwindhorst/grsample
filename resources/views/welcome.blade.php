@@ -5,7 +5,7 @@
 @section('content')
 <div class="content">
     <div class="title m-b-md">
-        Laravel
+        Default Home Page
     </div>
 
     <div class="links">

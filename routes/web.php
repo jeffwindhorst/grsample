@@ -11,9 +11,12 @@
 |
 */
 
+/*
+ * Public routes
+ */
 Route::get('/', function () {
     return view('welcome');
-})->name('home');
+})->name('welcom');
 
 Route::get('/login', function() {
     return view('login');
@@ -23,6 +26,9 @@ Route::get('/register', function() {
     return view('register');
 })->name('register');
 
+/*
+ * Private routes
+ */
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
@@ -30,9 +36,9 @@ Route::get('/home', 'HomeController@index')->name('home');
 // Profile routes
 Route::get('/profile', function () {
     return view('profile');
-})->name('profile');
+})->name('profile')->middleware('auth');
 
-Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit');
+Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit')->middleware('auth');
 
 // Email route
-Route::get('email', 'EmailController@sendEmail');
+Route::get('email', 'EmailController@sendEmail')->middleware('auth');
