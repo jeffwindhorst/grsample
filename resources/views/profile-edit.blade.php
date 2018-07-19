@@ -7,6 +7,8 @@
     <div class="title m-b-md">
         Edit Profile
     </div>
-
+    <div>
+        {!! form($form) !!}
+    </div>
 </div>
 @endsection

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Kris\LaravelFormBuilder\FormBuilder;
 
 class UserProfileController extends Controller
 {
@@ -26,8 +27,17 @@ class UserProfileController extends Controller
         return view('profile');
     }
 
-    public function update(Request $request) {
+    public function update(FormBuilder $formBuilder) {
 
-        return view('profile-edit');
+        $form = $formBuilder->create(\App\Forms\ProfileForm::class, [
+            'method' => 'POST',
+            'url' => route('profile-save')
+        ]);
+
+        return view('profile-edit', compact('form'));
+    }
+
+    public function save(Request $request) {
+        echo 'SAVING PROFILE';
     }
 }
