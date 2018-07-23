@@ -13,15 +13,27 @@ class ProfileForm extends Form
                 'label' => 'Birthday',
                 'rules' => 'required',
                 'error_messages' => [
-                    'Birthday is required.'
+                    'birthdate.required' => 'Birthday is required.'
                 ]
             ])
             ->add('phone', 'text', [
                 'label' => 'Phone',
-                'rules' => 'required|min:5',
+                'rules' => 'required|min:10',
                 'error_messages' => [
-                    'Phone is required.'
+                    'phone.required' => 'Phone is required.'
                 ]
+            ])
+            ->add('street', 'text', [
+                'label' => 'Street',
+            ])
+            ->add('city', 'text', [
+                'label' => 'City',
+            ])
+            ->add('state', 'text', [
+                'label' => 'State',
+            ])
+            ->add('zip', 'text', [
+                'label' => 'Zip',
             ])
             ->add('Save', 'submit', [
                 'class' => 'btn btn-primary'
