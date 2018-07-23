@@ -36,42 +36,32 @@ class UserProfileController extends Controller
         return view('profile')->with('profile', $profile);
     }
 
-    public function update(FormBuilder $formBuilder) {
-
-        $form = $formBuilder->create(\App\Forms\ProfileForm::class, [
+    public function update(Request $request, FormBuilder $formBuilder) 
+    {
+        $profile = $request->user()->userProfile;
+        
+        $profileForm = $formBuilder->create(\App\Forms\ProfileForm::class, [
             'method' => 'POST',
-            'url' => route('profile-save')
+            'url' => route('profile-save'),
+            'model' => $profile
         ]);
-
-        return view('profile-edit', compact('form'));
+        
+        return view('profile-edit', compact('profileForm'));
     }
 
     public function save(Request $request) {
-        $currentUser = $request->user();
         $form = $this->form(ProfileForm::class);
 
         if (!$form->isValid()) {
            return redirect()->back()->withErrors($form->getErrors())->withInput();
        }
 
-       $userProfile = \App\UserProfile::updateOrCreate(['id' => $currentUser->id]);
+       $userProfile = \App\UserProfile::updateOrCreate(['user_id' => $request->user()->id]);
        
-//       echo '<Pre>';
-//       print_r($userProfile);
-//       echo '</pre>';
-//       exit;
-       
-       $userProfile->user_id = $currentUser->id;
+       $userProfile->user_id = $request->user()->id;
        $userProfile->birthdate = $request->input('birthdate');
        $userProfile->phone = $request->input('phone');
-       /*
-       $userProfile->address()->street = $request->input('street');
-       $userProfile->address()->city = $request->input('city');
-       $userProfile->address()->state = $request->input('state');
-       $userProfile->address()->zip = $request->input('zip');
-       */
-       
-       
+       $userProfile->save();
        return redirect()->route('profile');
     }
 }

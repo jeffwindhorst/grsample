@@ -23,18 +23,6 @@ class ProfileForm extends Form
                     'phone.required' => 'Phone is required.'
                 ]
             ])
-            ->add('street', 'text', [
-                'label' => 'Street',
-            ])
-            ->add('city', 'text', [
-                'label' => 'City',
-            ])
-            ->add('state', 'text', [
-                'label' => 'State',
-            ])
-            ->add('zip', 'text', [
-                'label' => 'Zip',
-            ])
             ->add('Save', 'submit', [
                 'class' => 'btn btn-primary'
             ]);

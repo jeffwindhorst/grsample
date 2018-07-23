@@ -8,7 +8,7 @@
         Edit Profile
     </div>
     <div>
-        {!! form($form) !!}
+        {!! form($profileForm) !!}
     </div>
 </div>
 @endsection
