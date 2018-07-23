@@ -20,6 +20,8 @@ class UserProfiles extends Model
      * @var string
      **/
     protected $table = 'user_profiles';
+     
+    /**
      * @var array
      */
     protected $fillable = ['user_id', 'birthdate', 'phone', 'created_at', 'updated_at'];
@@ -35,8 +37,8 @@ class UserProfiles extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function userAddresses()
+    public function address()
     {
-        return $this->hasMany('App\UserAddress');
+        return $this->morphMany('App\Address', 'addressable');
     }
 }

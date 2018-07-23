@@ -6,29 +6,34 @@ use Illuminate\Database\Eloquent\Model;
 
 /**
  * @property int $id
- * @property int $user_profile_id
  * @property string $street
  * @property string $city
  * @property string $state
  * @property string $zip
  * @property float $longitude
  * @property float $latitude
+ * @property float $addressable_id
+ * @property float $addressable_type
  * @property string $created_at
  * @property string $updated_at
  * @property UserProfile $userProfile
  */
-class UserAddresses extends Model
+class Addresses extends Model
 {
     /**
      * @var string
      **/
-     protected $table = user_addresses;
+     protected $table = 'addresses';
 
     /**
      * @var array
      */
-    protected $fillable = ['user_profile_id', 'street', 'city', 'state', 'zip', 'longitude', 'latitude', 'created_at', 'updated_at'];
+    protected $fillable = ['street', 'city', 'state', 'zip', 'longitude', 'latitude', 'addressable_id', 'addressable_type', 'created_at', 'updated_at'];
 
+    public function addressable() {
+        return $this->morphTo();
+    }
+    
     /**
      * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
      */
