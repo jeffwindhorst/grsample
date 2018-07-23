@@ -48,6 +48,9 @@
                                 <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
                             </li>
                         @else
+                            @if( Auth::user()->is_admin )
+                            <li class="nav-item"><a class="nav-link" role="button" href="{{ route('geocode') }}">Geocode</a>
+                            @endif
                             <li class="nav-item"><a class="nav-link" role="button" href="{{ url('email') }}">Email</a>
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

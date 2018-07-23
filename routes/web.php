@@ -39,8 +39,11 @@ Route::get('/profile', 'UserProfileController@index')->name('profile')->middlewa
 Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit')->middleware('auth');
 Route::post('/profile/save', 'UserProfileController@save')->name('profile-save')->middleware('auth');
 
+// Address routes
+Route::get('/addresses', 'AddressController@index')->name('addresses')->middleware('auth');
 Route::get('/address/add', 'AddressController@add')->name('address-add')->middleware('auth');
 Route::post('/address/save', 'AddressController@update')->name('address-save')->middleware('auth');
+Route::get('/address/geocode', 'AddressController@geocode')->name('geocode')->middleware('auth');
 
 // Email route
 Route::get('email', 'EmailController@sendEmail')->middleware('auth');
