@@ -14,7 +14,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property User $user
  * @property UserAddress[] $userAddresses
  */
-class UserProfiles extends Model
+class UserProfile extends Model
 {
     /**
      * @var string

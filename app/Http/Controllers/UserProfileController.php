@@ -7,18 +7,21 @@ use Kris\LaravelFormBuilder\FormBuilder;
 use Kris\LaravelFormBuilder\FormBuilderTrait;
 
 use App\Forms\ProfileForm;
+use App\UserProfile;
 
 class UserProfileController extends Controller
 {
     use FormBuilderTrait;
+    
+    protected $profile;
 
     /**
      * Create a new controller instance.
      *
      * @return void
      */
-    public function __construct()
-    {
+    public function __construct(Request $request)
+    {    
         $this->middleware('auth');
     }
 
@@ -27,9 +30,10 @@ class UserProfileController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('profile');
+        $profile = \App\UserProfile::find($request->user()->id);
+        return view('profile')->with('profile', $profile);
     }
 
     public function update(FormBuilder $formBuilder) {
@@ -43,15 +47,31 @@ class UserProfileController extends Controller
     }
 
     public function save(Request $request) {
+        $currentUser = $request->user();
         $form = $this->form(ProfileForm::class);
 
         if (!$form->isValid()) {
            return redirect()->back()->withErrors($form->getErrors())->withInput();
        }
 
-       $birthday = $request->input('name');
-       $phone = $request->input('phone');
-       echo $phone;
-       //return redirect()->route('profile');
+       $userProfile = \App\UserProfile::updateOrCreate(['id' => $currentUser->id]);
+       
+//       echo '<Pre>';
+//       print_r($userProfile);
+//       echo '</pre>';
+//       exit;
+       
+       $userProfile->user_id = $currentUser->id;
+       $userProfile->birthdate = $request->input('birthdate');
+       $userProfile->phone = $request->input('phone');
+       /*
+       $userProfile->address()->street = $request->input('street');
+       $userProfile->address()->city = $request->input('city');
+       $userProfile->address()->state = $request->input('state');
+       $userProfile->address()->zip = $request->input('zip');
+       */
+       
+       
+       return redirect()->route('profile');
     }
 }

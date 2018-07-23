@@ -34,9 +34,7 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 // Profile routes
-Route::get('/profile', function () {
-    return view('profile');
-})->name('profile')->middleware('auth');
+Route::get('/profile', 'UserProfileController@index')->name('profile')->middleware('auth');
 
 Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit')->middleware('auth');
 Route::post('/profile/save', 'UserProfileController@save')->name('profile-save')->middleware('auth');
