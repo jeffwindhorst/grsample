@@ -44,18 +44,6 @@ class AddressController extends Controller
         $address->state = $inputs['state'];
         $address->zip = $inputs['zip'];
         $userProfile->addresses()->save($address);
-        
-//        $address = \App\Address::updateOrCreate(
-//                [
-//                    'id' => $request->input('id')
-//                ], [
-//                    'street'    => $inputs['street'],
-//                    'city'      => $inputs['city'],
-//                    'state'     => $inputs['state'],
-//                    'zip'       => $inputs['zip'],
-//                    'addressable_id' => $userProfile->id,
-//                    'addressable_type' => 'user_profile'
-//                ]);
 
         return redirect()->route('profile');
     }

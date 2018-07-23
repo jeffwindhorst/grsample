@@ -34,12 +34,8 @@ class UserProfileController extends Controller
     {
         $profile = \App\UserProfile::find($request->user()->id);
         $addresses = $profile->addresses;
-//        echo '<pre>';
-//        echo 'COUNT: ' . $addresses->count();
-//        echo '</pre>';
-//        exit;
         
-        return view('profile')->with('profile', $profile);
+        return view('profile')->with(['profile' => $profile, 'addresses' => $addresses]);
     }
 
     public function update(Request $request, FormBuilder $formBuilder) 

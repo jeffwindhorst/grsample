@@ -32,5 +32,11 @@
                 <a id="add-address-link" href="{{ route('address-add') }}">Add</a>
             </p>
         </h2>
+        <div class="address-display">
+            @foreach($addresses as $address)
+            {{ $address->street }}<br>
+            {{ $address->city }}, {{ $address->state }} {{ $address->zip }}
+            @endforeach
+        </div>
     </div>
 @endsection

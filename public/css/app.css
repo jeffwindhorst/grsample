@@ -10551,6 +10551,12 @@ h1 {
   margin: 0 25px 0 0;
 }
 
+.address-display {
+  margin: 0 0 25px 0;
+  border: 1px solid #ccc;
+  border-width: 0 0 1px 0;
+}
+
 #header {
   border: 1px solid #ccc;
   border-width: 0 0 1px 0;
