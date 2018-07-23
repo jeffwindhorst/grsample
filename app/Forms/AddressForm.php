@@ -9,6 +9,7 @@ class AddressForm extends Form
     public function buildForm()
     {
         $this
+            ->add('id', 'hidden')
             ->add('street', 'text', [
                 'label' => 'Street',
             ])

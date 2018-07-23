@@ -39,5 +39,8 @@ Route::get('/profile', 'UserProfileController@index')->name('profile')->middlewa
 Route::get('/profile/edit', 'UserProfileController@update')->name('profile-edit')->middleware('auth');
 Route::post('/profile/save', 'UserProfileController@save')->name('profile-save')->middleware('auth');
 
+Route::get('/address/add', 'AddressController@add')->name('address-add')->middleware('auth');
+Route::post('/address/save', 'AddressController@update')->name('address-save')->middleware('auth');
+
 // Email route
 Route::get('email', 'EmailController@sendEmail')->middleware('auth');

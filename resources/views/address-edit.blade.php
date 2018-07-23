@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
-@section('title', 'Edit Address')
+@section('title', 'Add Address')
 
 @section('content')
 <div class="content">
     <div class="title m-b-md">
-        Edit Address
+        Add Address
     </div>
     <div>
         {!! form($addressForm) !!}

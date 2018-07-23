@@ -37,7 +37,7 @@ class UserProfile extends Model
     /**
      * @return \Illuminate\Database\Eloquent\Relations\HasMany
      */
-    public function address()
+    public function addresses()
     {
         return $this->morphMany('App\Address', 'addressable');
     }

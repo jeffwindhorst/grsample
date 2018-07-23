@@ -15,7 +15,6 @@ class CreatedAdressesTable extends Migration
     {
         Schema::create('addresses', function (Blueprint $table) {
             $table->increments('id');
-            $table->unsignedInteger('user_profile_id');
             $table->text('street');
             $table->text('city');
             $table->text('state');
@@ -25,8 +24,6 @@ class CreatedAdressesTable extends Migration
             $table->unsignedInteger('addressable_id');
             $table->text('addressable_type');
             $table->timestamps();
-
-            $table->foreign('user_profile_id')->references('id')->on('user_profiles');
         });
     }
 

@@ -18,7 +18,7 @@ use Illuminate\Database\Eloquent\Model;
  * @property string $updated_at
  * @property UserProfile $userProfile
  */
-class Addresses extends Model
+class Address extends Model
 {
     /**
      * @var string
