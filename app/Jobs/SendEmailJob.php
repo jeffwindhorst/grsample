@@ -8,6 +8,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Http\Request;
 use App\Mail\SendMailable;
 
 class SendEmailJob implements ShouldQueue
@@ -29,8 +30,9 @@ class SendEmailJob implements ShouldQueue
      *
      * @return void
      */
-    public function handle()
+    public function handle(Request $request)
     {
-        Mail::to('jeffwindhorst@gmail.com')->send(new SendMailable());
+        $email = $request->user()->email;
+        Mail::to($email)->send(new SendMailable());
     }
 }
