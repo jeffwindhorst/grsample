@@ -19,8 +19,8 @@ class CreatedAdressesTable extends Migration
             $table->text('city');
             $table->text('state');
             $table->char('zip', 5);
-            $table->decimal('longitude', 11, 8);
-            $table->decimal('latitude', 11, 8);
+            $table->decimal('longitude', 11, 8)->nullable();
+            $table->decimal('latitude', 11, 8)->nullable();
             $table->unsignedInteger('addressable_id');
             $table->text('addressable_type');
             $table->timestamps();

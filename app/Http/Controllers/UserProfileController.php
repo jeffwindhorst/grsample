@@ -33,6 +33,11 @@ class UserProfileController extends Controller
     public function index(Request $request)
     {
         $profile = \App\UserProfile::find($request->user()->id);
+        $addresses = $profile->addresses;
+//        echo '<pre>';
+//        echo 'COUNT: ' . $addresses->count();
+//        echo '</pre>';
+//        exit;
         
         return view('profile')->with('profile', $profile);
     }

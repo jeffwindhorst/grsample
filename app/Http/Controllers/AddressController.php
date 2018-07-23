@@ -18,7 +18,6 @@ class AddressController extends Controller
         $userProfile = $request->user()->userProfile;
         $addresses = $userProfile->addresses;
 
-        echo $userProfile->id; exit;
         $addressForm = $formBuilder->create(\App\Forms\AddressForm::class, [
             'method' => 'POST',
             'url' => route('address-save'),
@@ -31,24 +30,33 @@ class AddressController extends Controller
     public function update(Request $request)
     {
         $form = $this->form(AddressForm::class);
-
+        $userProfile = $request->user()->userProfile;
+        
         if (!$form->isValid()) {
             return redirect()->back()->withErrors($form->getErrors())->withInput();
         }
 
-        $address = \App\Address::updateOrCreate(['id' => $request->input('id')]);
-
         $inputs = $request->all();
+        
+        $address = new \App\Address();
         $address->street = $inputs['street'];
-        $address->city = $inputs['birthdate'];
+        $address->city = $inputs['city'];
         $address->state = $inputs['state'];
         $address->zip = $inputs['zip'];
+        $userProfile->addresses()->save($address);
         
-        echo '<pre>';
-        print_r($address);
-        echo '</pre>';
-        exit;
-        $address->save();
+//        $address = \App\Address::updateOrCreate(
+//                [
+//                    'id' => $request->input('id')
+//                ], [
+//                    'street'    => $inputs['street'],
+//                    'city'      => $inputs['city'],
+//                    'state'     => $inputs['state'],
+//                    'zip'       => $inputs['zip'],
+//                    'addressable_id' => $userProfile->id,
+//                    'addressable_type' => 'user_profile'
+//                ]);
+
         return redirect()->route('profile');
     }
 }
