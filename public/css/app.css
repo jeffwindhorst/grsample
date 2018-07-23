@@ -10541,9 +10541,14 @@ body {
   float: left;
 }
 
+h1 {
+  width: 100%;
+}
+
 #profile-edit-link {
   width: 75px;
   font-size: .5em;
+  margin: 0 25px 0 0;
 }
 
 #header {
