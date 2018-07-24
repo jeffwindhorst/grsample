@@ -32,6 +32,7 @@ Route::get('/register', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/users', 'UserProfileController@userList')->name('users')->middleware('auth');
 
 // Profile routes
 Route::get('/profile', 'UserProfileController@index')->name('profile')->middleware('auth');

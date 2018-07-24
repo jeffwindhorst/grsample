@@ -37,6 +37,15 @@ class UserProfileController extends Controller
         
         return view('profile')->with(['profile' => $profile, 'addresses' => $addresses]);
     }
+    
+    /**
+     * Show a list of system users
+     */
+    public function userList(Request $request) 
+    {
+        $users = \App\User::all();
+        return view('user-list')->with('users', $users);
+    }
 
     public function update(Request $request, FormBuilder $formBuilder) 
     {

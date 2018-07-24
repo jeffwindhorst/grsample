@@ -49,6 +49,7 @@
                             </li>
                         @else
                             @if( Auth::user()->is_admin )
+                            <li class="nav-item"><a class="nav-link" role="button" href="{{ route('users') }}">Users</a>
                             <li class="nav-item"><a class="nav-link" role="button" href="{{ route('geocode') }}">Geocode</a>
                             @endif
                             <li class="nav-item"><a class="nav-link" role="button" href="{{ url('email') }}">Email</a>
